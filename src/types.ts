@@ -1,4 +1,7 @@
-// export type Gender = 'male' | 'female';
+export enum Gender {
+  male = 'male',
+  female = 'female',
+}
 
 export interface PatientEntry {
   id: string;
@@ -11,6 +14,7 @@ export interface PatientEntry {
 
 export type PatientPublicEntry = Omit<PatientEntry, 'ssn'>;
 
+export type NewPatientEntry = Omit<PatientEntry, 'id'>;
 
 export interface DiagnoseEntry {
   code: string;

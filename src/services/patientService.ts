@@ -1,21 +1,27 @@
-import patientData from '../../data/patients.json';
+import {v1 as uuid} from 'uuid';
+import patientEntries from '../../data/patients';
 
-import { PatientEntry, PatientPublicEntry } from '../types';
+import { PatientEntry, PatientPublicEntry, NewPatientEntry } from '../types';
 
-const patients: Array<PatientEntry> = patientData;
+const patients: Array<PatientEntry> = patientEntries;
 
 const getEntries = (): PatientEntry [] => {
   return patients;
 };
 
-export const getPublicEntries = (): PatientPublicEntry [] => {
-  return patientData.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+const getPublicEntries = (): PatientPublicEntry [] => {
+  return patientEntries.map(({ id, name, dateOfBirth, gender, occupation }) => ({
     id, name, dateOfBirth, gender, occupation
   }));
 };
 
-const addEntry = () => {
-  return null;
+const addEntry = (patientData: NewPatientEntry): PatientEntry => {
+  const id: string = uuid();
+  const newPatient = {...patientData, id};
+
+  patientEntries.push(newPatient);
+
+  return newPatient;
 };
 
 export default {
