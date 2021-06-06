@@ -1,11 +1,11 @@
 import {v1 as uuid} from 'uuid';
 import patientEntries from '../../data/patients';
 
-import { PatientEntry, PatientPublicEntry, NewPatientEntry, PublicPatient } from '../types';
+import { Patient, PatientPublicEntry, NewPatientEntry, PublicPatient } from '../types';
 
-const patients: Array<PatientEntry> = patientEntries;
+const patients: Array<Patient> = patientEntries;
 
-const getEntries = (): PatientEntry [] => {
+const getEntries = (): Patient [] => {
   return patients;
 };
 
@@ -15,7 +15,7 @@ const getPublicEntries = (): PatientPublicEntry [] => {
   }));
 };
 
-const addEntry = (patientData: NewPatientEntry): PatientEntry => {
+const addEntry = (patientData: NewPatientEntry): Patient => {
   const id: string = uuid();
   const newPatient = {...patientData, id};
 
